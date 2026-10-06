@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="ko" data-fonts="Paperlogy, Pretendard, Meslo">
+<head>
+<meta charset="utf-8">
+<title>IP OPS HARNESS — reel</title>
+<style>
+  @font-face { font-family: "Paperlogy"; src: url("fonts/Paperlogy-9Black.ttf"); font-weight: 900; }
+  @font-face { font-family: "Paperlogy"; src: url("fonts/Paperlogy-8ExtraBold.ttf"); font-weight: 800; }
+  @font-face { font-family: "Paperlogy"; src: url("fonts/Paperlogy-7Bold.ttf"); font-weight: 700; }
+  @font-face { font-family: "Paperlogy"; src: url("fonts/Paperlogy-6SemiBold.ttf"); font-weight: 600; }
+  @font-face { font-family: "Paperlogy"; src: url("fonts/Paperlogy-4Regular.ttf"); font-weight: 400; }
+  @font-face { font-family: "Pretendard"; src: url("fonts/PretendardVariable.ttf"); font-weight: 100 900; }
+  @font-face { font-family: "Meslo"; src: url("fonts/Meslo-Bold.ttf"); font-weight: 100 900; }
+
+  :root {
+    --bg: #07080B; --ink: #F3F0E8; --dim: #5D6172; --dim2: #2A2E3A; --line: #1C1F28;
+    --ai: #36E2FF; --human: #FFC933; --alert: #FF4B3A; --paper: #F1EEE6; --ink-dark: #0B0C10;
+  }
+  html, body { margin: 0; height: 100%; background: #000; overflow: hidden; }
+  #wrap { width: 1920px; height: 1080px; transform-origin: 0 0; }
+  #stage { position: relative; width: 1920px; height: 1080px; overflow: hidden; background: var(--bg);
+           color: var(--ink); font-family: "Pretendard", sans-serif; font-kerning: normal;
+           -webkit-font-smoothing: antialiased; text-rendering: geometricPrecision; }
+  .scene { position: absolute; inset: 0; overflow: hidden; }
+  .scrub { position: fixed; left: 0; right: 0; bottom: 8px; width: 100%; }
+
+  .abs { position: absolute; }
+  .full { position: absolute; inset: 0; }
+  .disp { font-family: "Paperlogy"; font-weight: 900; letter-spacing: -0.045em; line-height: 1.02; white-space: nowrap; }
+  .mono { font-family: "Meslo", monospace; font-weight: 700; letter-spacing: 0.02em; white-space: nowrap; }
+  .body { font-family: "Pretendard"; font-weight: 600; letter-spacing: -0.02em; white-space: nowrap; }
+  .ai { color: var(--ai); } .human { color: var(--human); } .alert { color: var(--alert); } .dimc { color: var(--dim); }
+  .ch { will-change: transform; }
+
+  /* 월드(카메라가 움직이는 평면) */
+  #world { position: absolute; left: 0; top: 0; width: 0; height: 0; transform-origin: 0 0; }
+  .block { position: absolute; width: 1400px; height: 760px; }
+  .kicker { position: absolute; left: 0; top: 0; font-family: "Meslo"; font-weight: 700; font-size: 26px; letter-spacing: 0.06em; color: var(--ai); white-space: nowrap; }
+  .kicker b { color: var(--ink); font-weight: 700; }
+  .cap { position: absolute; left: -4px; top: 46px; font-family: "Paperlogy"; font-weight: 900; font-size: 112px;
+         letter-spacing: -0.05em; line-height: 1.04; white-space: nowrap; }
+  .cap .line { display: block; overflow: hidden; padding: 0 0.06em 0.04em 0; }
+  .cap .in { display: inline-block; }
+  .tag { position: absolute; font-family: "Meslo"; font-weight: 700; font-size: 20px; color: var(--dim); letter-spacing: 0.04em; white-space: nowrap; }
+  .chip { position: absolute; height: 58px; padding: 0 24px; border-radius: 29px; border: 2px solid var(--dim2);
+          font: 600 28px/54px "Pretendard"; letter-spacing: -0.02em; color: var(--ink); white-space: nowrap; box-sizing: border-box; }
+  .pill { position: absolute; width: 190px; height: 56px; border-radius: 12px; box-sizing: border-box; border: 2px solid var(--dim2);
+          font: 700 22px/52px "Meslo"; text-align: center; color: var(--dim); letter-spacing: 0.04em; }
+  .card { position: absolute; border-radius: 22px; background: #0E1016; border: 2px solid var(--dim2); box-sizing: border-box; overflow: hidden; }
+  .skel { position: absolute; height: 14px; border-radius: 7px; background: #262A36; }
+  .grade { font-family: "Paperlogy"; font-weight: 900; }
+
+  /* 화면 고정 레이어 */
+  #token { position: absolute; left: 0; top: 0; width: 0; height: 0; }
+  .hud { font-family: "Meslo"; font-weight: 700; font-size: 18px; letter-spacing: 0.08em; color: var(--dim); white-space: nowrap; }
+  .crop { position: absolute; width: 26px; height: 26px; border-color: var(--dim2); border-style: solid; border-width: 0; }
+</style>
+</head>
+<body>
+<div id="wrap"><div id="stage"></div></div>
+<script src="engine.js"></script>
+<script src="scenes.js"></script>
+</body>
+</html>
